@@ -38,6 +38,21 @@ class Card {
         case thirteen
         
         static let allCases: [Number] = [.one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .ten, .eleven, .twelve, .thirteen]
+        
+        func getCardString() -> String {
+            switch self {
+            case .one:
+                return "A"
+            case .eleven:
+                return "J"
+            case .twelve:
+                return "Q"
+            case .thirteen:
+                return "K"
+            default:
+                return "\(self.rawValue)"
+            }
+        }
     }
     
     init(shape: Shape, number: Number) {
@@ -59,7 +74,7 @@ class Card {
 
 extension Card: CustomStringConvertible {
     var description: String {
-        let convertedNumber = CardConverter.getCardString(number: number)
+        let convertedNumber = number.getCardString()
         return "\(shape.rawValue)\(convertedNumber)"
     }
 }

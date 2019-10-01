@@ -8,19 +8,17 @@
 
 import Foundation
 
-struct InputView {
+struct InputView: InputViewRepresentable {
     
-    static func askQuestions() -> Inquiry? {
+    func askQuestions() -> String {
         print("다음 메뉴를 선택해주세요.")
         for question in Inquiry.allCases {
             print(question.selection)
         }
-        do {
-            return try Parser.parse(readLine() ?? "")
-        } catch {
-            print("error")
-            return nil
-        }
-        
+        return readLine() ?? ""
     }
+}
+
+protocol InputViewRepresentable {
+    func askQuestions() -> String
 }

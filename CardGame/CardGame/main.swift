@@ -8,7 +8,14 @@
 
 import Foundation
 
-var controller = GameController()
+let cards = Card.getAllCards()
+let inputView = InputView()
+let outputView = OutputView()
+var controller = GameController(
+    cards: cards,
+    inputView: inputView,
+    outputView: outputView
+)
 controller.start(times: 3)
 
 
